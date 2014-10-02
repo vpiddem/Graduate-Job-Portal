@@ -1,0 +1,78 @@
+
+    <table class="pure-table pure-table-bordered">
+      <% if current_user.role == 2 %>
+          <h1>Jobs Created by you</h1>
+          <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Application deadline</th>
+    <th>Category</th>
+    <th>Tags</th>
+    <th>Employers</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.title %></td>
+        <td><%= job.description %></td>
+        <td><%= job.application_deadline %></td>
+        <td>
+          <% @category =  Category.find_by_id(job.category_id) %>
+          <%= @category.name%>
+        </td>
+        <td>
+          <%
+          @job_tag = JobTag.where(job_id: job.id)
+
+          puts @job_tag
+          puts "hello"
+             @tag = Array.new
+          @job_tag.each { |j| @tag << j.tag_id }
+          puts  @tag
+
+          %>
+           <%@tag.each  do |s| %>
+              <%= Tag.find_by_id(s).tag_value%>
+          <% end %>
+        </td>
+        <td><%= link_to 'Edit', edit_job_path(job) %></td>
+        <td><%= button_to 'Destroy', job, method: :delete, data: { confirm: 'Are you Sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+
+
+<br>
+
+<%= link_to 'New Job', new_job_path %>
+<%else %>
+    <h1>Listing jobs</h1>
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Application deadline</th>
+        <th>Category</th>
+        <th>Tags</th>
+        <th>Employers</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @jobs.each do |job| %>
+          <tr>
+            <td><%= job.title %></td>
+            <td><%= job.description %></td>
+            <td><%= job.application_deadline %></td>
+            <td><%= job.category_id %></td>
+            <td><%= job.employers_id %></td>
+            <td><%= link_to 'Apply', new_job_application_path(job) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+      <%end%>
+    </table>
+

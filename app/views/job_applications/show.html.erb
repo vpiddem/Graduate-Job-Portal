@@ -1,0 +1,31 @@
+
+
+    <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @job_application.job_id %>
+</p>
+
+<p>
+  <strong>Job seeker:</strong>
+  <%= @job_application.job_seeker_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @job_application.status %>
+</p>
+
+<p>
+  <strong>Cover letter:</strong>
+  <%= @job_application.cover_letter %>
+</p>
+
+<p>
+  <strong>Application deadline:</strong>
+  <%= @job_application.application_deadline %>
+</p>
+
+<%= link_to 'Edit', edit_job_application_path(@job_application) %> |
+<%= link_to 'Back', job_applications_path %>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+   <!--- Basic Page Needs
+   ================================================== -->
+   <meta charset="utf-8">
+  <title>Dire Wolf</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+   <!-- Mobile Specific Metas
+   ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- CSS
+    ================================================== -->
+
+   <%= stylesheet_link_tag 'default' , media:'screen' %>
+      <%= stylesheet_link_tag 'layout' , media:'screen' %>
+       <%= stylesheet_link_tag 'media-queries' , media:'screen' %>
+  <!--  <link rel="stylesheet" href="../../assets/stylesheets/default.css">
+  <link rel="stylesheet" href="../../assets/stylesheets/layout.css">
+   <link rel="stylesheet" href="../../assets/stylesheets/media-queries.css">
+ -->
+   <!-- Script
+   ================================================== -->
+   <!-- <%= javascript_include_tag :modernizr %>  -->
+  <script src="../../assets/javascripts/modernizr.js"></script>
+
+   <!-- Favicons
+  ================================================== -->
+    <%= favicon_link_tag('favicon.png', class: "round") %>
+
+</head>
+
+<body>
+
+   <!-- Header
+   ================================================== -->
+   <header>
+
+
+      <div class="row">
+
+         <div class="twelve columns">
+ <div class="logo">
+                <%= link_to(image_tag( "logo.png",alt: "DireWolf", class: "round"),"/") %>  
+            </div>
+
+
+            <nav id="nav-wrap">
+
+               <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+              <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+               <ul id="nav" class="nav">
+                 <!-- <li class="current"><a href="landing.html">Home</a></li> -->
+                  <li><a href="contact">Contact</a></li>
+  <% if !(current_user == nil) && (current_user.role == 3 )%>
+                     <li><span><a href="#">Admin</a></span>
+                     <ul>
+                        <li><a href="/employers">Employers</a></li>
+                        <li><a href="/categories">Job Categories</a></li>
+                        <li><a href="/admin_users">Admins</a></li>
+                     </ul>
+                  </li>
+                  <% end %>
+
+                      <% if !(current_user == nil) && (current_user.role == 2 )%>
+                    <li><span><a href="#">Employers</a></span>
+                     <ul>
+                        <li><a href="/jobs">Post</a></li>
+                        <li><a href="/job_applications">View Applications</a></li>
+                     </ul>
+                  </li>
+                  <% end %>
+
+                  <li><span><a href="#">Job Seekers</a></span>
+                     <ul>
+                       <%if user_signed_in? %>
+                        <li><a href="/jobs">Jobs & Internships</a></li>
+                        <li><a href="/employers">Companies</a></li>
+                       <% else %>
+                       <li><a href="/visitors">Jobs & Internships</a></li>
+                       <% end %>
+                     </ul>
+                  </li>
+
+                 <% if user_signed_in? %>
+                     Logged in as <strong><%= current_user.email %></strong>.
+                     <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                     <%= link_to "Logout", destroy_user_session_path, method: :delete  %>
+                 <% else %>
+                     <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                     <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+                 <% end %>
+               </ul> <!-- end #nav -->
+
+            </nav> <!-- end #nav-wrap -->
+
+         </div>
+
+      </div>
+
+   </header> <!-- Header End -->
+
+   <!-- Intro Section
+   ================================================== -->
+   <section id="intro">
+
+      <!-- Flexslider Start-->
+     <div id="intro-slider" class="flexslider">
+
+       <ul class="slides">
+
+         <!-- Slide -->
+         <li>
+           <div class="row">
+             <div class="twelve columns">
+               <div class="slider-text">
+                 <h1>Dire Wolf Portal<span>.</span></h1>
+                 <p>The Official Search Portal for all the Graduate Job needs.</p>
+               </div>
+                     <div class="slider-image">
+                        
+                         <%= image_tag( "home-slider-image-01.png", alt: "DireWolf", class: "round") %> 
+                     </div>
+             </div>
+           </div>
+         </li>
+
+            <!-- Slide -->
+         <li>
+           <div class="row">
+             <div class="twelve columns">
+               <div class="slider-text">
+                 <h1>Companies + DireWolf + Graduates<span>.</span></h1>
+                 <p>DireWolf is that place on the World wide Web where the Companies tend to meet their future hires. We focus on delivering Quality new-hires to cater to the comapny's needs. At the same time,our portal sets an example in terms of delivering to the job search needs of the job-seeking Graduates.</p>
+               </div>
+                     <div class="slider-image">
+                        <%= image_tag( "home-slider-image-02.png", alt: "DireWolf", class: "round") %> 
+                     </div>
+             </div>
+           </div>
+         </li>
+
+       </ul>
+
+     </div> <!-- Flexslider End-->
+
+   </section> <!-- Intro Section End-->
+
+   <!-- Info Section
+   ================================================== -->
+   <section id="info">
+
+      <div class="row">
+
+         <div class="bgrid-quarters s-bgrid-halves">
+
+           <div class="columns">
+              <h2>Companies.</h2>
+              <p>We have partnered with many companies.Begin your search to explore the endless opportunities.
+              </p>
+           </div>
+
+           <div class="columns">
+              <h2>Searching for a Job?.</h2>
+
+              <p>Register to the Site ASAP! We shall show you who's waiting for you.
+              </p>
+           </div>
+
+           <div class="columns s-first">
+              <h2>E-Partners.</h2>
+
+              <p>Our E-Partners include most of the fortune 500 companies of the likes of Wolfbook, Wolfsoft, and the list goes on.
+              </p>
+           </div>
+
+
+           <div class="columns">
+            <h2>Search for Jobs</h2>
+             <%if user_signed_in? %>
+         <p>Start your search here..
+              <%= form_tag "jobs/show", :method => 'post' do %>
+                       <%= text_field_tag :search, params[:search] %>
+                       <%= submit_tag "Search Jobs", :name => nil %>
+                      <% end %>
+                      </p>
+                 <%else %>
+                 <p>Start your search here..
+                   <%= form_tag "visitors/show", :method => 'post' do %>
+                       <%= text_field_tag :search, params[:search] %>
+                       <%= submit_tag "Search Jobs", :name => nil %>
+                   <% end %>
+                 </p>
+             <%end%>
+           </div>
+
+           </div>
+
+      </div>
+
+   </section> <!-- Info Section End-->
+
+   
+
+
+   <!-- footer
+   ================================================== -->
+   <footer>
+
+      <div class="row">
+
+         <div class="twelve columns">
+
+            <ul class="footer-nav">
+          <li><a href="#">Home.</a></li>
+                <li><a href="#">About.</a></li>
+                <li><a href="#">Contact.</a></li>
+               <!-- <li><a href="#">Features.</a></li> -->
+         </ul>
+
+            <ul class="footer-social">
+               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+               <li><a href="#"><i class="fa fa-skype"></i></a></li>
+               <li><a href="#"><i class="fa fa-rss"></i></a></li>
+            </ul>
+
+            <ul class="copyright">
+               <li>Copyright &copy; 2014 Dire Wolf</li> 
+               <li>Design by VMS</li>               
+            </ul>
+
+         </div>
+
+         <div id="go-top" style="display: block;"><a title="Back to Top" href="#">Go To Top</a></div>
+
+      </div>
+
+   </footer> <!-- Footer End-->
+
+   <!-- Java Script
+   ================================================== -->
+
+  <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
+  <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" %>
+  <%= javascript_include_tag "jquery-rails.js" %>
+<!-- 
+   <%= javascript_include_tag :jquery1 %>
+   <%= javascript_include_tag :jquery2 %>
+   <%= javascript_include_tag :jquery_flexslider %>
+ 
+   <%= javascript_include_tag :doubletaptogo %>
+   <%= javascript_include_tag :init %>
+ -->
+   <!--
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script>window.jQuery || document.write('<script src="../../assets/javascripts/jquery-1.10.2.min.js"><\/script>')</script>
+   <script type="text/javascript" src="../../assets/javascripts/jquery-migrate-1.2.1.min.js"></script>
+
+   <script src="../../assets/javascripts/jquery.flexslider.js"></script>
+   <script src="../../assets/javascripts/doubletaptogo.js"></script>
+   <script src="../../assets/javascripts/init.js"></script>
+ -->
+
+</body>
+
+</html>

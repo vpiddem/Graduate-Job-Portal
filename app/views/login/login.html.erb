@@ -1,0 +1,49 @@
+<% provide(:title, "Sign in") %>
+<h1>Sign in</h1>
+
+
+  <!-- CSS
+    ================================================== -->
+   <%= stylesheet_link_tag 'login' , media:'screen' %>
+
+
+<div class="row">
+  <div class="span6 offset3">
+    <% for attribute in current_user.attributes.keys %>
+        <p><%= attribute.humanize %> <%= current_user.attributes[attribute].to_s %></p>
+    <% end %>
+
+    <% jobseeker= JobSeeker.find_by_user_id(current_user.id.to_s) %>
+    <h1> Job Seeker details</h1>
+    <% for attribute in jobseeker.attributes.keys %>
+        <p><%= attribute.humanize %> <%= jobseeker.attributes[attribute].to_s %></p>
+    <% end %>
+  </div>
+</div>
+
+
+
+<!-- <div id="wrapper">
+
+    <form name="login-form" class="login-form" action="" method="post">
+    
+        <div class="header">
+        <h1>Login Form</h1>
+        <span>Fill out the form below to login to my super awesome imaginary control panel.</span>
+        </div>
+    
+        <div class="content">
+        <input name="username" type="text" class="input username" placeholder="Username" />
+        <div class="user-icon"></div>
+        <input name="password" type="password" class="input password" placeholder="Password" />
+        <div class="pass-icon"></div>       
+        </div>
+
+        <div class="footer">
+        <input type="submit" name="submit" value="Login" class="button" />
+        <input type="submit" name="submit" value="Register" class="register" />
+        </div>
+    
+    </form>
+
+</div> -->

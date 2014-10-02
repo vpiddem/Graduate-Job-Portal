@@ -1,0 +1,25 @@
+<h1>Demo#hello</h1>
+<p>Hello Demo from Hello@NCSU</p>
+
+<%= 1 + 1 %>
+<br>
+<% target = "Hello WolfPack" %>
+<%= "The Encrypted Message is #{target}" %>
+
+
+<br>
+<% @array.each do |n| %>
+  <%= "Hello #{n}"%>
+    <br>
+<% end %>
+
+<br>
+<a href="/demo/index">Index Link1</a><br>
+<%= link_to("Index Link2",'index') %>
+<%= link_to("Index Link3",{:action => 'index'}) %> <!-- Intelligent Command -->
+
+<hr>
+ID = <%= params[:id] %><br>
+ID = <%= @id %><br>
+Page No = <%= @page_no %><br>
+<%= params.inspect %>

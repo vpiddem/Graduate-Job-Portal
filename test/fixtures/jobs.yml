@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  application_deadline: 2014-09-27 23:24:19
+  category_id: 1
+  tags_id: 1
+  employers_id: 1
+
+two:
+  title: MyString
+  description: MyString
+  application_deadline: 2014-09-27 23:24:19
+  category_id: 1
+  tags_id: 1
+  employers_id: 1

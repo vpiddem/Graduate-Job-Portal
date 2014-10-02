@@ -1,0 +1,2 @@
+Rails.application.config.assets.precompile = ['*.js' ,'*.css','*.css.scss' ,'*.css.erb','font-awesome/*.css','fonts/*.css', '*.png','*.jpg']
+# Rails.application.config.assets.precompile += %w( default.css , fonts.css, layout.css, application.js)

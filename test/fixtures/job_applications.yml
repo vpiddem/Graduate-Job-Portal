@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job_id: 1
+  job_seeker_id: 1
+  status: MyString
+  cover_letter: MyText
+  application_deadline: 2014-09-26 22:40:02
+
+two:
+  job_id: 1
+  job_seeker_id: 1
+  status: MyString
+  cover_letter: MyText
+  application_deadline: 2014-09-26 22:40:02

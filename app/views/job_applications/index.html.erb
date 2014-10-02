@@ -1,0 +1,68 @@
+
+<h1>Listing Job Applications</h1>
+
+<table class="pure-table pure-table-horizontal">
+  <thead>
+    <tr>
+      <th>Job</th>
+      <th>Applicant</th>
+      <th>Status</th>
+      <th>Cover letter</th>
+      <th>Application deadline</th>
+  
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job_applications.each do |job_application| %>
+      <tr>
+        <td><%= Job.find_by_id(job_application.job_id).title %></td>
+        <td><%jobseeker =  JobSeeker.find_by_user_id(job_application.job_seeker_id.to_s)
+if jobseeker != nil %>
+<%= jobseeker.first_name%>
+<%else %>
+abc
+<%end%></td>
+        <td><%= job_application.getApplicationState %></td>
+        <td><%= job_application.cover_letter %></td>
+        <td><%= job_application.application_deadline %></td>
+        <% if current_user.role == 1 %>
+        <td><%= link_to 'Show', job_application %></td>
+        <td><%= link_to 'Edit', edit_job_application_path(job_application) %></td>
+
+        <td><%= link_to 'Destroy', job_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <%elsif current_user.role == 2%>
+            <%= form_for job_application,:url => status_path(job_application),method: :post do |f| %>
+                <%= hidden_field_tag :id, job_application.id %>
+            <td>
+              <div class="col-sm-3">
+                <% index = job_application.status %>
+                <select type="number" id="status" name="status" class="form-control">
+                  <option value="1" <%= 'selected' if index == "Pending review" %>>Pending</option>
+                  <option value="2" <%= 'selected' if index == "Not a Fit" %>>Not a Fit</option>
+                  <option value="3" <%= 'selected' if index == "Future Interview" %>>Future Interview</option>
+                </select>
+              </div>
+            </td>
+            <td>
+            <div class="form-group ">
+
+                  <div class="actions">
+                    <%= f.submit %>
+                  </div>
+                  <% end%>
+
+            </div>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if current_user.role == 1 %>
+<%= link_to 'New Job application', new_job_application_path %>
+<%end%>

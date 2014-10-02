@@ -1,0 +1,28 @@
+<>
+    <h1>Listing jobs</h1>
+    <table class="pure-table pure-table-bordered">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Application deadline</th>
+        <th>Category</th>
+        <th>Tags</th>
+        <th>Employers</th>
+
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @jobs.each do |job| %>
+          <tr>
+            <td><%= job.title %></td>
+            <td><%= job.description %></td>
+            <td><%= job.application_deadline %></td>
+            <td><%= job.category_id %></td>
+            <td><%= job.employers_id %></td>
+            <td><%= link_to 'LogIn to Apply', new_user_session_path %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
